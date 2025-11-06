@@ -10,7 +10,7 @@ public class ZenitsuCombat : MonoBehaviour
    [SerializeField] private GameObject _attackEffect;
    
    
-   [Header("Skill(Honoikazuchi no Kami")]
+   [Header("Skill(Honoikazuchi no Kami)")]
    [SerializeField] private float _skillDamage = 100f; //스킬 데미지
    [SerializeField] private float _skillCooldown = 10.0f; //스킬 쿨타임
    [SerializeField] private GameObject _skillHitbox;
@@ -23,6 +23,25 @@ public class ZenitsuCombat : MonoBehaviour
 
    private ZenitsuMovement _movement;
 
+   public float AttackCoolDownRemaining
+   {
+      get
+      {
+         float remaining = (_lastAttackTime + _attackCooldown) - Time.time;
+         return remaining < 0f ? 0f:remaining;
+      }
+   }
+
+   public float SkillCooldownRemaining
+   {
+      get
+      {
+         float remaining = (_lastSkillTime + _skillCooldown) - Time.time;
+         return remaining < 0f ? 0f:remaining;
+      }
+   }
+   public float AttackCooldownTotal { get{return _attackCooldown;}}
+   public float SkillCooldownTotal { get{return _skillCooldown;}}
    private void Awake()
    {
       _input = GetComponent<ZenitsuInput>();
