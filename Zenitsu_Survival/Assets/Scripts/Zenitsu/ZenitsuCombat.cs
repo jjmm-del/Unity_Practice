@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections; 
+using UnityEngine.VFX;
 public class ZenitsuCombat : MonoBehaviour
 {
    [Header("Normal Attack")]
@@ -7,7 +8,7 @@ public class ZenitsuCombat : MonoBehaviour
    [SerializeField] private float _attackCooldown = 1.0f; //공격 쿨타임
    [SerializeField] private GameObject _attackHitbox; //공격 히트박스
    [SerializeField] private float _attackDashDuration = 0.3f;
-   [SerializeField] private GameObject _attackEffect;
+   [SerializeField] private VisualEffect _attackEffect;
    
    
    [Header("Skill(Honoikazuchi no Kami)")]
@@ -20,7 +21,8 @@ public class ZenitsuCombat : MonoBehaviour
    private ZenitsuInput _input;
    private float _lastAttackTime = -999f;
    private float _lastSkillTime = -999f;
-
+   private static readonly int _vfxStartPosID = Shader.PropertyToID("StartPosition");
+   private static readonly int _vfxEndPosID = Shader.PropertyToID("EndPosition");
    private ZenitsuMovement _movement;
 
    public float AttackCoolDownRemaining
@@ -49,7 +51,7 @@ public class ZenitsuCombat : MonoBehaviour
       
       if (_attackHitbox != null) _attackHitbox.SetActive(false);
       if(_skillHitbox != null) _skillHitbox.SetActive(false);
-      _attackEffect?.SetActive(false);
+      //_attackEffect?.SetActive(false);
    }
 
    private void Update()
@@ -82,17 +84,28 @@ public class ZenitsuCombat : MonoBehaviour
    private IEnumerator DashAttackCoroutine()
    {
       Debug.Log("벽력일섬");
-
       _lastAttackTime = Time.time;
+
+      Vector3 dashStartPosition = transform.position;
       _movement.StartDash();
 
-      if (_attackEffect != null) _attackEffect.SetActive(true);
+      //if (_attackEffect != null) _attackEffect.SetActive(true);
       if(_attackHitbox != null) _attackHitbox.SetActive(true);
 
       yield return new WaitForSeconds(_attackDashDuration);
       _movement.StopDash();
-      if (_attackEffect != null) _attackEffect.SetActive(false);
+      
+      //if (_attackEffect != null) _attackEffect.SetActive(false);
       if(_attackHitbox != null) _attackHitbox.SetActive(false);
+      Vector3 dashEndPosition = transform.position;
+
+      if (_attackEffect != null)
+      {
+         _attackEffect.SetVector3(_vfxStartPosID,dashStartPosition);
+         _attackEffect.SetVector3(_vfxEndPosID,dashEndPosition);
+
+         _attackEffect.Play();
+      }
       
       Debug.Log("...대시 종료");
    }
