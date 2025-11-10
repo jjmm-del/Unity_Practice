@@ -21,8 +21,6 @@ public class ZenitsuCombat : MonoBehaviour
    private ZenitsuInput _input;
    private float _lastAttackTime = -999f;
    private float _lastSkillTime = -999f;
-   private static readonly int _vfxStartPosID = Shader.PropertyToID("StartPosition");
-   private static readonly int _vfxEndPosID = Shader.PropertyToID("EndPosition");
    private ZenitsuMovement _movement;
 
    public float AttackCoolDownRemaining
@@ -85,8 +83,11 @@ public class ZenitsuCombat : MonoBehaviour
    {
       Debug.Log("벽력일섬");
       _lastAttackTime = Time.time;
+      if (_attackEffect != null)
+      {
+         _attackEffect.Play();
+      }
 
-      Vector3 dashStartPosition = transform.position;
       _movement.StartDash();
 
       //if (_attackEffect != null) _attackEffect.SetActive(true);
@@ -94,18 +95,13 @@ public class ZenitsuCombat : MonoBehaviour
 
       yield return new WaitForSeconds(_attackDashDuration);
       _movement.StopDash();
-      
-      //if (_attackEffect != null) _attackEffect.SetActive(false);
-      if(_attackHitbox != null) _attackHitbox.SetActive(false);
-      Vector3 dashEndPosition = transform.position;
-
       if (_attackEffect != null)
       {
-         _attackEffect.SetVector3(_vfxStartPosID,dashStartPosition);
-         _attackEffect.SetVector3(_vfxEndPosID,dashEndPosition);
-
-         _attackEffect.Play();
+         _attackEffect.Stop();
       }
+      //if (_attackEffect != null) _attackEffect.SetActive(false);
+      if(_attackHitbox != null) _attackHitbox.SetActive(false);
+     
       
       Debug.Log("...대시 종료");
    }

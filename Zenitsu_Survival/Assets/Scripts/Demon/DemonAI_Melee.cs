@@ -184,15 +184,18 @@ public class DemonAI_Melee : MonoBehaviour
     {
         _rigidbody.linearVelocity = _dashDirection * _dashSpeed;
     }
-    private void JumpPhysics()
-    {
-        throw new NotImplementedException();
-    }
-
-
+    
     private void FacePlayer()
     {
-        throw new NotImplementedException();
+        if (_currentState == AiState.Attack_Dash) return;
+        if (_playerTransform.position.x > transform.position.x)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
     
 }
