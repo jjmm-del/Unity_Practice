@@ -8,6 +8,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class AttackHitbox : MonoBehaviour
 {
+    public event Action OnHitEnemy;
+    
     private float _damageToDeal;
     private List<Collider2D> _hitEnemies;
     
@@ -70,5 +72,7 @@ public class AttackHitbox : MonoBehaviour
         Debug.Log($"[Hitbox] {otherGameObjectName}에게 {_damageToDeal} 데미지 입힘! (성공)");
         demon.TakeDamage(_damageToDeal);
         _hitEnemies.Add(otherCollider);
+
+        OnHitEnemy?.Invoke();
     }
 }

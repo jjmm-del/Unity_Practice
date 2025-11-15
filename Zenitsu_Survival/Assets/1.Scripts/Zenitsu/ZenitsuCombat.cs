@@ -13,14 +13,16 @@ public class ZenitsuCombat : MonoBehaviour
    
    [Header("Skill(Honoikazuchi no Kami)")]
    [SerializeField] private float _skillDamage = 100f; //스킬 데미지
-   [SerializeField] private float _skillCooldown = 10.0f; //스킬 쿨타임
+   //[SerializeField] private float _skillCooldown = 10.0f; //스킬 쿨타임
+   [SerializeField] private int _skillHitTarget = 10;
    [SerializeField] private GameObject _skillHitboxObject;
    [SerializeField] private float _skillDashDuration = 0.6f;
    [SerializeField] private GameObject _skillEffectPrefab; //화뢰신 이펙트 프리팹
 
    private ZenitsuInput _input;
    private float _attackCooldownTimer = 0f;
-   private float _skillCooldownTimer = 0f;
+  // private float _skillCooldownTimer = 0f;
+   private int _currentSkillHitCount = 0;
    private ZenitsuMovement _movement;
    private AttackHitbox _skillHitbox;
    private AttackHitbox _attackHitbox;
@@ -36,11 +38,11 @@ public class ZenitsuCombat : MonoBehaviour
    {
       get
       {
-         return Mathf.Max(0f, _skillCooldown - _skillCooldownTimer);
+         return (float)Mathf.Max(0f,_skillHitTarget - _currentSkillHitCount);
       }
    }
    public float AttackCooldownTotal { get{ return _attackCooldown; }}
-   public float SkillCooldownTotal { get{ return _skillCooldown; }}
+   public float SkillCooldownTotal { get{ return (float)_skillHitTarget; }}
    private void Awake()
    {
       _input = GetComponent<ZenitsuInput>();
@@ -49,17 +51,30 @@ public class ZenitsuCombat : MonoBehaviour
       if (_attackHitboxObject != null)
       {
          _attackHitbox = _attackHitboxObject.GetComponent<AttackHitbox>();
+         _attackHitbox.OnHitEnemy += HandleAttackHit;
+         
          _attackHitboxObject.SetActive(false);
+
       }
 
       if (_skillHitboxObject != null)
       {
          _skillHitbox = _skillHitboxObject.GetComponent<AttackHitbox>();
+         _skillHitbox.OnHitEnemy += HandleAttackHit;
          _skillHitboxObject.SetActive(false);
+         
+
       }
       //_attackEffect?.SetActive(false);
    }
 
+   private void HandleAttackHit()
+   {
+      if (_currentSkillHitCount >= _skillHitTarget) return;
+
+      _currentSkillHitCount++;
+      Debug.Log($"[ZenitsuCombat]스킬 충전!({_currentSkillHitCount}/{_skillHitTarget})");
+   }
    private void Update()
    {
       if (_attackCooldownTimer > 0f)
@@ -67,16 +82,17 @@ public class ZenitsuCombat : MonoBehaviour
          _attackCooldownTimer -= Time.deltaTime;
       }
 
-      if (_skillCooldownTimer > 0f)
-      {
-         _skillCooldownTimer -= Time.deltaTime;
-      }
+      // if (_skillCooldownTimer > 0f)
+      // {
+      //    _skillCooldownTimer -= Time.deltaTime;
+      // }
+      
       if (_input.AttackInput && _attackCooldownTimer <= 0f)
       {
          PerformAttack();
       }
 
-      if (_input.SkillInput && _skillCooldownTimer <= 0f)
+      if (_input.SkillInput && _currentSkillHitCount >= _skillHitTarget)
       {
          PerformSkill();
       }
@@ -133,7 +149,7 @@ public class ZenitsuCombat : MonoBehaviour
    private IEnumerator DashSkillCoroutine()
    {
       Debug.Log("화뢰신(火雷神)!");
-      _skillCooldownTimer = _skillCooldown;
+      _currentSkillHitCount = 0;
       _movement.StartDash();
 
 
@@ -151,7 +167,19 @@ public class ZenitsuCombat : MonoBehaviour
       _movement.StopDash();
       if(_skillHitboxObject != null) _skillHitboxObject.SetActive(false);
    }
-   
+
+   private void OnDestroy()
+   {
+      if (_attackHitbox != null)
+      {
+         _attackHitbox.OnHitEnemy -= HandleAttackHit;
+      }
+
+      if (_skillHitbox != null)
+      {
+         _skillHitbox.OnHitEnemy -= HandleAttackHit;
+      }
+   }
    
 
 }

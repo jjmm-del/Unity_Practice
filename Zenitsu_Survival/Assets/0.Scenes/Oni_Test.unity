@@ -614,7 +614,6 @@ RectTransform:
   - {fileID: 440511872}
   - {fileID: 1500621506}
   - {fileID: 87071647}
-  - {fileID: 941598211}
   - {fileID: 486638224}
   - {fileID: 1999439279}
   m_Father: {fileID: 0}
@@ -643,10 +642,11 @@ MonoBehaviour:
   _hpText: {fileID: 1556810221}
   _expSlider: {fileID: 1500621507}
   _levelText: {fileID: 941598212}
+  _skillSlider: {fileID: 87071648}
+  _attackCountText: {fileID: 666569761}
   _attackIconMask: {fileID: 1873322915}
   _attackCooldownText: {fileID: 1550302127}
   _skillIconMask: {fileID: 1428034739}
-  _skillCooldownText: {fileID: 666569761}
 --- !u!1 &423544054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,8 +1603,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1899,7 +1899,7 @@ MonoBehaviour:
   _attackDashDuration: 0.03
   _attackEffect: {fileID: 125045840}
   _skillDamage: 100
-  _skillCooldown: 10
+  _skillHitTarget: 10
   _skillHitboxObject: {fileID: 412274556}
   _skillDashDuration: 0.06
   _skillEffectPrefab: {fileID: 6933725706278975849, guid: 395542b4de6f73e45afa26030c5f8fcf, type: 3}
@@ -1987,16 +1987,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941598210}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 412638507}
+  m_Father: {fileID: 1500621506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -832, y: 298}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &941598212
@@ -2054,9 +2054,9 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2552,7 +2552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -4538727392710309230, guid: 50ceb4d05e0db624f8cfb33edaba329c, type: 3}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2600,6 +2600,7 @@ RectTransform:
   m_Children:
   - {fileID: 471544055}
   - {fileID: 220192289}
+  - {fileID: 941598211}
   m_Father: {fileID: 412638507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3574,7 +3575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -860, y: 156}
+  m_AnchoredPosition: {x: -860, y: 200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1999439280

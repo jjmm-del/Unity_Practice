@@ -16,12 +16,17 @@ public class PlayerHUDManager : MonoBehaviour
     [Header("EXP Bar(경험치)")]
     [SerializeField] private Slider _expSlider;
     [SerializeField] private TextMeshProUGUI _levelText;
+    
+    [Header("스킬 사용(Skill)")]
+    [SerializeField]private Slider _skillSlider;
+    [SerializeField] private TextMeshProUGUI _attackCountText;
+    
 
     [Header("Cooldowns(쿨타임)")]
     [SerializeField] Image _attackIconMask;
     [SerializeField] private TextMeshProUGUI _attackCooldownText;
     [SerializeField] Image _skillIconMask;
-    [SerializeField] private TextMeshProUGUI _skillCooldownText;
+    //[SerializeField] private TextMeshProUGUI _skillCooldownText;
 
     private void Awake()
     {
@@ -37,7 +42,7 @@ public class PlayerHUDManager : MonoBehaviour
         }
     }
 
-    private void OnDestory()
+    private void OnDestroy()
     {
         if (_playerHealth != null)
         {
@@ -85,14 +90,14 @@ public class PlayerHUDManager : MonoBehaviour
 
         float attackRemaining = _playerCombat.AttackCoolDownRemaining;
         float attackTotal = _playerCombat.AttackCooldownTotal;
-        UpdateCooldownUI(_attackIconMask, _attackCooldownText, attackRemaining, attackTotal);
+        UpdateAttackCooldownUI(_attackIconMask, _attackCooldownText, attackRemaining, attackTotal);
         
-        float skillRemaining = _playerCombat.SkillCooldownRemaining;
-        float skillTotal = _playerCombat.SkillCooldownTotal;
-        UpdateCooldownUI(_skillIconMask, _skillCooldownText, skillRemaining, skillTotal);
+        float skillHitsRemaining = _playerCombat.SkillCooldownRemaining;
+        float skillHitsTotal = _playerCombat.SkillCooldownTotal;
+        UpdateSkillHitUI(skillHitsRemaining, skillHitsTotal);
     }
 
-    private void UpdateCooldownUI(Image mask, TextMeshProUGUI text, float remaining, float total)
+    private void UpdateAttackCooldownUI(Image mask, TextMeshProUGUI text, float remaining, float total)
     {
         if (mask == null) return;
         if (remaining > 0f)
@@ -111,6 +116,33 @@ public class PlayerHUDManager : MonoBehaviour
             {
                 text.text = "";
             }
+        }
+    }
+
+    private void UpdateSkillHitUI(float remainingHits, float totalHits)
+    {
+        float currentHits = totalHits - remainingHits;
+        if (_skillSlider != null)
+        {
+            if (totalHits <= 0)
+            {
+                _skillSlider.value = 0f;
+            }
+            else
+            {
+                
+                _skillSlider.value = currentHits / totalHits;
+            }
+        }
+
+        if (_skillIconMask != null)
+        {
+            bool isNotReady = remainingHits > 0;
+            _skillIconMask.gameObject.SetActive(isNotReady);
+        }
+        if (_attackCountText != null)
+        {
+            _attackCountText.text = Mathf.Ceil(currentHits)+ " / " + Mathf.Ceil(totalHits);
         }
     }
 }
