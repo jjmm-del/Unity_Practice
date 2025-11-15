@@ -1,0 +1,29 @@
+{
+    "asset": "e58ad262a9b8f4e41ac59f3a502a7f3a",
+    "fileName": "019a76e3-7301-7a66-87da-ae81f88bdf0c.png",
+    "prompt": "Zenitsu walking animation frame, make sprite sheet to make animation",
+    "negativePrompt": "",
+    "model": "5b5b2af1-6ea4-4266-b087-cc9f3bf4f450",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "cace42c3985d717aa606f8a1bde5fa0c",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 7,
+                "doodle": [],
+                "label": "Image",
+                "strength": 0.6000000238418579,
+                "invertStrength": false,
+                "assetReferenceGuid": "e0a1d18f8ff374c44a8dcdf1c9954cbb"
+            }
+        ]
+    },
+    "upscaleFactor": 0
+}
