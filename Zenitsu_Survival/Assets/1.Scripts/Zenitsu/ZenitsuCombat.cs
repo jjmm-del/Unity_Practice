@@ -65,7 +65,7 @@ public class ZenitsuCombat : MonoBehaviour
          
 
       }
-      //_attackEffect?.SetActive(false);
+      _attackEffect?.Stop();
    }
 
    private void HandleAttackHit()
