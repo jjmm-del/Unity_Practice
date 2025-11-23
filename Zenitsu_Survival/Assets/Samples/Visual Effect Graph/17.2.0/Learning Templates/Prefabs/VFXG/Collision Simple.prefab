@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3385902144265741256, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: Collision Simple
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3385902144265741256, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_fontSize
@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796978554488964388, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: Collision Simple
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3796978554488964388, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_fontSize
@@ -387,13 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6393118192857248175, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: "\nAs VFX Graph is <b>simulating particles on the GPU</b>, they cannot
-        collide with regular Rigid Body Colliders. But you can still make them collide
-        with different geometry approximations like Boxes, Spheres, Cones, Planes
-        or even complex shapes with the use of SDF and/or Depth Buffer. This example
-        shows you how to combine different <b>collider blocks</b> to get the desired
-        results.\n\n<b>Covered Aspects</b>:\n\u2022 Collision Properties\n\u2022
-        Collider Blocks\n\u2022 Boolean Port"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6393118192857248175, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_enableAutoSizing
@@ -405,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6424475011069275086, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: Collision Simple
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6424475011069275086, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_fontSize

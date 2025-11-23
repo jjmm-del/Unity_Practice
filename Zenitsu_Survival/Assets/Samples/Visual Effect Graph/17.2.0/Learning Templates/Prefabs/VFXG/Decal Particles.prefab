@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3385902144265741256, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: Decal Particles
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3385902144265741256, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_fontSize
@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796978554488964388, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: Decal Particles
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3796978554488964388, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_fontSize
@@ -383,16 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6393118192857248175, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: "\n<b>Decal</b> is powerful tool that can add a lot of visual complexity
-        to an environment. We can use <b>decals</b> to project textures on the environment
-        and even on dynamic objects or skinned meshes. Output Decals allow you to
-        render particles as <b>decals</b> and to project its properties onto a surface
-        using a Base Color map (albedo), a Normal Map, or a Mask Map. This example
-        shows how to leverage the <b>Output Decal</b> to stick and project animated
-        <b>decals</b> onto an animated skinned mesh renderer.\n\n<i><b>Warning</b>:
-        For this feature to work in URP, make sure to add an <b>Decal Renderer Feature</b>
-        in your <b>URP Renderer Data</b> file.</i>\n\n<b>Covered Aspects</b>:\n\u2022
-        Skinned Mesh Position\n\u2022 Output Decals HDRP\n\u2022 Output Decals URP"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6393118192857248175, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_enableAutoSizing
@@ -404,7 +395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6424475011069275086, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_text
-      value: Decal Particles
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6424475011069275086, guid: 7837c49e89b12db43b2a59edba6bff6b, type: 3}
       propertyPath: m_fontSize
