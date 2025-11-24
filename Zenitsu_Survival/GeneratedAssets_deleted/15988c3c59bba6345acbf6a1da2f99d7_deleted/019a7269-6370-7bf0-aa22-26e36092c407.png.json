@@ -1,0 +1,20 @@
+{
+    "asset": "15988c3c59bba6345acbf6a1da2f99d7",
+    "fileName": "019a7269-6370-7bf0-aa22-26e36092c407.png",
+    "prompt": "번개 모양의 텍스처",
+    "negativePrompt": "",
+    "model": "5b5b2af1-6ea4-4266-b087-cc9f3bf4f450",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "e9a222b2bdf991ae798581e536dfc356",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

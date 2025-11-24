@@ -1,0 +1,20 @@
+{
+    "asset": "15988c3c59bba6345acbf6a1da2f99d7",
+    "fileName": "019a7271-a757-7d07-b633-d4122d70ff79.png",
+    "prompt": "Create a high-quality lightning texture with sharp edges and glowing effects. The lightning should have a jagged and irregular shape, resembling natural lightning bolts. Use a vibrant blue and white color scheme with a glowing aura around the bolt. The texture should be seamless and suitable for use in a Visual Effect Graph in Unity.",
+    "negativePrompt": "",
+    "model": "5b5b2af1-6ea4-4266-b087-cc9f3bf4f450",
+    "modelName": "Flux.1 Dev",
+    "customSeed": -1,
+    "w3CTraceId": "0e7b85b876c882ca0aefd428fa1f7f27",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
